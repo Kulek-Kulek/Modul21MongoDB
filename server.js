@@ -6,7 +6,7 @@ mongoose.connect('mongodb://localhost/nodeappdatabase', {
   
 });
 
-//new user Schema
+
 const userSchema = new Schema({
     name: String,
     username: { type: String, required: true, unique: true },
@@ -16,19 +16,19 @@ const userSchema = new Schema({
     updated_at: Date
 });
 
-//Mongoose schema method
+
 userSchema.methods.manify = function(next) {
     this.name = this.name + '-boy';
 
     return next(null, this.name);
 };
 
-//pre-save method
+
 userSchema.pre('save', function(next) {
-    //pobranie aktualnego czasu
+   
     const currentDate = new Date();
 
-    //zmiana pola na aktualny czas
+ 
     this.updated_at = currentDate;
 
     if (!this.created_at)
@@ -38,13 +38,13 @@ userSchema.pre('save', function(next) {
 });
 
 const User = mongoose.model('User', userSchema);
-//instancje klasy User
+
 const kenny = new User({
     name: 'Kenny',
     username: 'Kenny_the_boy',
     password: 'password'
 });
-// do tego moentu jest taki nasz szablon
+
 
 
 kenny.manify(function(err, name) {
