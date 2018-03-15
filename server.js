@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://<kulek>:<zaq12wsx>@ds113799.mlab.com:13799/nodeappdatabase', {
+mongoose.connect('mongodb://kulek:123@ds113799.mlab.com:13799/nodeappdatabase', {
     
 });
 
